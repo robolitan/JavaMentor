@@ -28,10 +28,4 @@ public class DeleteUserServlet extends HttpServlet implements ReqHelper {
         req.setAttribute("usersList", list);
         req.getRequestDispatcher("jsp/index.jsp").forward(req, resp);
     }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/jsp/edit_user.jsp").forward(req, resp);
-    }
-
 }

@@ -20,8 +20,6 @@
             </td>
             <td>
                 <input type="text" value="${requestScope.user.password}" name="password" hidden="hidden">
-<%--                <input type="text" value="${requestScope.user.gender}" name="gender"--%>
-<%--                required="required" pattern="([m|M]{1}(ale|ALE))|([f|F]{1}(emale|EMALE))">--%>
                 <select size="1" name="gender" required="required">
                     <option value="male">MALE</option>
                     <option value="female">FEMALE</option>
@@ -29,7 +27,7 @@
             </td>
             <td>
                 <input type="text" value="${requestScope.user.birthday}" name="birthday"
-                required="required" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])">
+                       required="required" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])">
             </td>
         </tr>
         <tr>
