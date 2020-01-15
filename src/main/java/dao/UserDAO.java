@@ -2,7 +2,6 @@ package dao;
 
 import models.Gender;
 import models.User;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;

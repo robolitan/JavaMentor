@@ -24,7 +24,7 @@
             <td>${user.gender}</td>
             <td>
                 <form action="/delete" method="post">
-                    <input type="text" value="${user.id}" name="id" hidden="hidden">
+                    <input type="text" value="9999" name="id" hidden="hidden">
                     <input type="submit" value="delete">
                 </form>
                 <form action="/edit" method="get">

@@ -2,8 +2,6 @@ package servlets;
 
 import models.User;
 import services.UserService;
-import utils.ReqHelper;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,15 +11,14 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/delete", name = "deleteUserPatern")
-public class DeleteUserServlet extends HttpServlet implements ReqHelper {
+public class DeleteUserServlet extends HttpServlet {
     UserService userService = new UserService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String str = getParametrs(req,"id");
         if (userService.deleteUserById(Integer.parseInt(req.getParameter("id")))) {
             resp.setStatus(HttpServletResponse.SC_OK);
-        }else {
+        } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
         List<User> list = userService.getAllUsers();

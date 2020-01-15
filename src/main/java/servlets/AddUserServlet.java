@@ -1,24 +1,32 @@
 package servlets;
 
+import models.Gender;
 import models.User;
 import services.UserService;
-import utils.ReqHelper;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(urlPatterns = "/add", name = "userServlet")
-public class AddUserServlet extends HttpServlet implements ReqHelper {
+public class AddUserServlet extends HttpServlet{
     UserService userService = new UserService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (userService.addUser(getUserFromReq(req))) {
+        Map<String, String[]> parameters = req.getParameterMap();
+        String name = parameters.get("name")[0];
+        String password = parameters.get("password")[0];
+        String gender = parameters.get("gender")[0].toUpperCase();
+        String birthday = parameters.get("birthday")[0];
+        User user = new User(name,password, Gender.valueOf(gender), LocalDate.parse(birthday));
+
+        if (userService.addUser(user)) {
             resp.setStatus(HttpServletResponse.SC_OK);
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
