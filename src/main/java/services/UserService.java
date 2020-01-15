@@ -50,8 +50,8 @@ public class UserService {
             return getUserDAO().getUserById(id);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new User();
         }
-        return null;
     }
 
     public boolean editUser(User user) {
