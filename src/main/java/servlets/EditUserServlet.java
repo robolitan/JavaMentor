@@ -1,6 +1,5 @@
 package servlets;
 
-import models.Gender;
 import models.User;
 import services.UserService;
 import javax.servlet.ServletException;
@@ -20,10 +19,11 @@ public class EditUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, String[]> parameters = req.getParameterMap();
         int id = Integer.parseInt(parameters.get("id")[0]);
-        String name = parameters.get("name")[0];
+        String firstName = parameters.get("firstName")[0];
+        String lastName = parameters.get("lastName")[0];
         String password = parameters.get("password")[0];
         String birthday = parameters.get("birthday")[0];
-        User user = new User(id, name, password, LocalDate.parse(birthday));
+        User user = new User(id, firstName,lastName,password, LocalDate.parse(birthday));
 
         if (userService.editUser(user)) {
             resp.setStatus(HttpServletResponse.SC_OK);

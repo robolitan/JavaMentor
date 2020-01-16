@@ -1,6 +1,6 @@
 package services;
 
-import dao.UserDAO;
+import dao.UserJdbcDAO;
 import models.User;
 import utils.Connector;
 import java.sql.Connection;
@@ -23,8 +23,8 @@ public class UserService {
         }
     }
 
-    private UserDAO getUserDAO() {
-        return new UserDAO(connection);
+    private UserJdbcDAO getUserDAO() {
+        return new UserJdbcDAO(connection);
     }
 
     public List<User> getAllUsers() {

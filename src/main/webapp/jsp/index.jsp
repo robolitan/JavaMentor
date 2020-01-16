@@ -10,14 +10,16 @@
     <caption style=" border: 2px solid #A40808; background: aqua ">USERS</caption>
     <tr>
         <th>ID</th>
-        <th>Name</th>
+        <th>First name</th>
+        <th>Last name</th>
         <th>Birthday</th>
         <th>Action</th>
     </tr>
     <c:forEach items="${usersList}" var="user">
         <tr>
             <td>${user.id}</td>
-            <td>${user.name}</td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
             <td>${user.birthday}</td>
             <td>
                 <form action="/delete" method="post">

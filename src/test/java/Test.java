@@ -1,11 +1,4 @@
-import models.Gender;
-import models.User;
-import services.UserService;
-import utils.Connector;
-
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws SQLException {
