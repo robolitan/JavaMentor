@@ -2,11 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>TASK 1</title>
     <link href="css/tablestyle.css" rel="stylesheet">
 </head>
 <body>
-
 <table class="redTable">
     <caption style=" border: 2px solid #A40808; background: aqua ">USERS</caption>
     <tr>
