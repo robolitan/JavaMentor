@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-interface UserDAO {
+public interface UserDAO {
     boolean addUser(User user) throws SQLException;
 
     boolean editUser(User user) throws SQLException;

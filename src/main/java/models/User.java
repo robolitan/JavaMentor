@@ -1,12 +1,27 @@
 package models;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "users")
 public class User {
+
+    @Id
+    @Column(name = "id_user")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "f_name")
     private String firstName;
+
+    @Column(name = "l_name")
     private String lastName;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "birthday")
     private LocalDate birthday;
 
     public User() {
