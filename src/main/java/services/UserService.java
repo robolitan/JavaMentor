@@ -11,6 +11,7 @@ import utils.JdbcConnector;
 import javax.persistence.NoResultException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
@@ -19,7 +20,7 @@ public class UserService {
 
     public UserService() {
         this.connection = JdbcConnector.getConnection();
-        this.session = HibernateConnector.getSessionFactory().openSession();
+//        this.session = HibernateConnector.getSessionFactory().openSession();
     }
 
     public boolean addUser(User user) {
@@ -32,8 +33,8 @@ public class UserService {
     }
 
     private UserDAO getUserDAO() {
-//        return new UserJdbcDAO(connection);
-        return new UserHibernateDAO(session.getSession());
+        return new UserJdbcDAO(connection);
+//        return new UserHibernateDAO(session.getSession());
     }
 
     public List<User> getAllUsers() {
@@ -41,7 +42,7 @@ public class UserService {
             return getUserDAO().getAllUser();
         } catch (SQLException e) {
             e.printStackTrace();
-            return List.of();
+            return new ArrayList<>();
         }
     }
 

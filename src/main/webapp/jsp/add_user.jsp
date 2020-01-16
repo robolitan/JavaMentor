@@ -31,8 +31,7 @@
             <td>Birthday:</td>
             <td>
                 <input type="text" name="birthday" placeholder="0000-00-00"
-                       pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
-                       required="required">
+                       pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" required="required">
             </td>
         </tr>
         <tr>

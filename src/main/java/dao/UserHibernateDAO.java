@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 
 import javax.persistence.NoResultException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO {
@@ -77,7 +78,7 @@ public class UserHibernateDAO implements UserDAO {
         }catch (NoResultException e ){
             e.printStackTrace();
         };
-        return List.of();
+        return new ArrayList<>();
     }
 
     @Override
