@@ -12,7 +12,6 @@
         <th>ID</th>
         <th>Name</th>
         <th>Birthday</th>
-        <th>Gender</th>
         <th>Action</th>
     </tr>
     <c:forEach items="${usersList}" var="user">
@@ -20,7 +19,6 @@
             <td>${user.id}</td>
             <td>${user.name}</td>
             <td>${user.birthday}</td>
-            <td>${user.gender}</td>
             <td>
                 <form action="/delete" method="post">
                     <input type="text" value="${user.id}" name="id" hidden="hidden">

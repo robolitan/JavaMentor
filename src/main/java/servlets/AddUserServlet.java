@@ -22,9 +22,8 @@ public class AddUserServlet extends HttpServlet{
         Map<String, String[]> parameters = req.getParameterMap();
         String name = parameters.get("name")[0];
         String password = parameters.get("password")[0];
-        String gender = parameters.get("gender")[0].toUpperCase();
         String birthday = parameters.get("birthday")[0];
-        User user = new User(name,password, Gender.valueOf(gender), LocalDate.parse(birthday));
+        User user = new User(name,password, LocalDate.parse(birthday));
 
         if (userService.addUser(user)) {
             resp.setStatus(HttpServletResponse.SC_OK);

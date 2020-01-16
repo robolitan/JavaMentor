@@ -20,13 +20,6 @@
             </td>
         </tr>
         <tr>
-            <td>Gender:</td>
-            <td>
-                <select size="1" name="gender" required="required">
-                    <option value="male">MALE</option>
-                    <option value="female">FEMALE</option>
-                </select>
-            </td>
         </tr>
         <tr>
             <td>Birthday:</td>

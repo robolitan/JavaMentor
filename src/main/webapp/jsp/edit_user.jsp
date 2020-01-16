@@ -20,10 +20,6 @@
             </td>
             <td>
                 <input type="text" value="${requestScope.user.password}" name="password" hidden="hidden">
-                <select size="1" name="gender" required="required">
-                    <option value="male">MALE</option>
-                    <option value="female">FEMALE</option>
-                </select>
             </td>
             <td>
                 <input type="text" value="${requestScope.user.birthday}" name="birthday"

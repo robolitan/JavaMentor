@@ -23,7 +23,6 @@ public class UserDAO {
         stmt.setString(1, user.getName());
         stmt.setString(2, user.getPassword());
         stmt.setDate(3, Date.valueOf(user.getBirthday()));
-        stmt.setObject(4, user.getGender().toString());
         return stmt.executeUpdate() > 0;
     }
 
@@ -48,12 +47,11 @@ public class UserDAO {
     }
 
     public boolean editUser(User user) throws SQLException {
-        String sql = "UPDATE users SET name = ?, gender = ?, birthday = ? WHERE id_user = ?;";
+        String sql = "UPDATE users SET name = ?, birthday = ? WHERE id_user = ?;";
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setString(1,user.getName());
-        stmt.setObject(2,user.getGender().toString());
-        stmt.setDate(3, Date.valueOf(user.getBirthday()));
-        stmt.setInt(4,user.getId());
+        stmt.setDate(2, Date.valueOf(user.getBirthday()));
+        stmt.setInt(3,user.getId());
         return stmt.executeUpdate() > 0;
     }
 
@@ -73,10 +71,8 @@ public class UserDAO {
         int id = resultSet.getInt(1);
         String name = resultSet.getString(2);
         String password = resultSet.getString(3);
-        Gender gender = Gender.valueOf(resultSet.getString(4));
-        LocalDate birthday = resultSet.getDate(5).toLocalDate();
-
-        return new User(id, name, password, gender, birthday);
+        LocalDate birthday = resultSet.getDate(4).toLocalDate();
+        return new User(id, name, password, birthday);
     }
 
     private boolean userExist(User user) throws SQLException    {
