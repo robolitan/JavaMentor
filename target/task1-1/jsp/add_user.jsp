@@ -6,11 +6,17 @@
 <body>
 <form action="/add" method="post">
     <table class="redTable" style="text-align: right">
-        <caption align="bottom">CREATE NEW USER</caption>
+        <caption style=" border: 2px solid #A40808; background: aqua ">Create user</caption>
         <tr>
-            <td>Name:</td>
+            <td>F.Name:</td>
             <td>
-                <input type="text" name="name" placeholder="Full Name" required="required"/>
+                <input type="text" name="firstName" placeholder="Name" required="required"/>
+            </td>
+        </tr>
+        <tr>
+            <td>S.Name:</td>
+            <td>
+                <input type="text" name="lastName" placeholder="Last name" required="required"/>
             </td>
         </tr>
         <tr>
@@ -20,13 +26,6 @@
             </td>
         </tr>
         <tr>
-            <td>Gender:</td>
-            <td>
-                <select size="1" name="gender" required="required">
-                    <option value="male">MALE</option>
-                    <option value="female">FEMALE</option>
-                </select>
-            </td>
         </tr>
         <tr>
             <td>Birthday:</td>
