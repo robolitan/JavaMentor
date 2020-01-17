@@ -18,10 +18,6 @@ public class JdbcConnector implements Connector{
         }
     }
 
-    public Connection getConnection(){
-        return connection;
-    }
-
     private String getConfiguration() {
         StringBuilder URL = new StringBuilder("jdbc:mysql://");
         URL.append("localhost:")
@@ -31,5 +27,9 @@ public class JdbcConnector implements Connector{
                 .append("password=admin&")
                 .append("serverTimezone=UTC");
         return URL.toString();
+    }
+
+    public Connection getConnection(){
+        return connection;
     }
 }

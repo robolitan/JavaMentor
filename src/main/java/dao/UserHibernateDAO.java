@@ -2,18 +2,21 @@ package dao;
 
 import models.User;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import utils.dbconnection.HibernateConnector;
 import utils.factory.HibernateConnectionFactory;
 import javax.persistence.NoResultException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO {
-    private Session session;
+    private SessionFactory sessionFactory;
 
     public UserHibernateDAO() {
-//        this.session = new HibernateConnectionFactory().createConnection().getConnection();
+        HibernateConnector conn = (HibernateConnector) new HibernateConnectionFactory().createConnection();
+        sessionFactory = conn.getSessionFactory();
     }
 
     @Override
@@ -21,14 +24,17 @@ public class UserHibernateDAO implements UserDAO {
         if (userExist(user)) {
             return false;
         }
+        Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.save(user);
         transaction.commit();
+        session.close();
         return true;
     }
 
     @Override
     public boolean editUser(User user) throws SQLException {
+        Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         String hql = "UPDATE User SET " +
                 " f_name = :f_name" +
@@ -43,37 +49,49 @@ public class UserHibernateDAO implements UserDAO {
         query.setParameter("id", user.getId());
         query.executeUpdate();
         transaction.commit();
+        session.close();
         return true;
     }
 
     @Override
     public boolean deleteUserById(int id) throws SQLException {
+        Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(new User(id, null, null, null, null));
         transaction.commit();
+        session.close();
         return true;
     }
 
     @Override
     public boolean userExist(User user) throws SQLException, NoResultException {
+        Session session = sessionFactory.openSession();
         String hql = "FROM User WHERE f_name = :f_name AND l_name = :l_name AND password = :password";
         Query query = session.createQuery(hql);
         query.setParameter("f_name", user.getfirstName());
         query.setParameter("l_name", user.getfirstName());
         query.setParameter("password", user.getfirstName());
-        return (User) query.getSingleResult() != null;
+        User fUser = (User) query.getSingleResult();
+        session.close();
+        return true;
     }
 
     @Override
     public List<User> getAllUser() throws SQLException, NoResultException {
         String hql = "FROM User";
-        return session.createQuery(hql).getResultList();
+        Session session = sessionFactory.openSession();
+        List<User> list = session.createQuery(hql).getResultList();
+        session.close();
+        return list;
     }
 
     @Override
-    public User getUserById(int id) throws SQLException {
+    public User getUserById(int id) throws SQLException, NoResultException {
         String hql = "FROM User WHERE id_user = :id";
+        Session session = sessionFactory.openSession();
         Query query = session.createQuery(hql);
-        return (User) query.setParameter("id", id).getSingleResult();
+        User userByid = (User) query.setParameter("id", id).getSingleResult();
+        session.close();
+        return userByid;
     }
 }

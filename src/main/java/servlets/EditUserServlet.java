@@ -1,5 +1,6 @@
 package servlets;
 
+import dao.UserJdbcDAO;
 import models.User;
 import services.UserService;
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 @WebServlet(urlPatterns = "/edit", name = "editUserServlet")
 public class EditUserServlet extends HttpServlet {
-    UserService userService = new UserService();
+    UserService userService = new UserService(new UserJdbcDAO());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

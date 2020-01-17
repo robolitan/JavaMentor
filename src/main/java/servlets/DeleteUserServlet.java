@@ -1,5 +1,6 @@
 package servlets;
 
+import dao.UserJdbcDAO;
 import services.UserService;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/delete", name = "deleteUserPatern")
 public class DeleteUserServlet extends HttpServlet {
-    UserService userService = new UserService();
+    UserService userService = new UserService(new UserJdbcDAO());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

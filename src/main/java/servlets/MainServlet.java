@@ -1,5 +1,6 @@
 package servlets;
 
+import dao.UserJdbcDAO;
 import services.UserService;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +14,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("usersList", new UserService().getAllUsers());
+        req.setAttribute("usersList", new UserService(new UserJdbcDAO()).getAllUsers());
         req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
     }
 }

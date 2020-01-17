@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
+    private UserDAO userDAO;
 
-    public UserService() {}
+    public UserService(UserDAO dao) {
+        this.userDAO = dao;
+    }
 
     public boolean addUser(User user) {
         try {
@@ -42,7 +45,7 @@ public class UserService {
     public User getUserById(int id) {
         try {
             return getUserDAO().getUserById(id);
-        } catch (SQLException e) {
+        } catch (SQLException | NoResultException e) {
             e.printStackTrace();
             return null;
         }
@@ -58,6 +61,6 @@ public class UserService {
     }
 
     private UserDAO getUserDAO() {
-        return new UserJdbcDAO();
+        return userDAO;
     }
 }

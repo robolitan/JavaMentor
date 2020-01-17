@@ -35,9 +35,7 @@ public class HibernateConnector implements Connector{
         return cfg.buildSessionFactory(builder.build());
     }
 
-    @Override
-    public Connection getConnection() {
-        sessionFactory.openSession();
-        return null;
+    public SessionFactory getSessionFactory(){
+        return sessionFactory;
     }
 }
