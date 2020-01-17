@@ -4,15 +4,13 @@ import models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import java.sql.Connection;
 
-public class HibernateConnector implements Connector{
+public class HibernateConnector implements Connector {
+    private static HibernateConnector hibernateConnector;
     private static SessionFactory sessionFactory;
 
-    public HibernateConnector() {
-        if (sessionFactory == null) {
-            sessionFactory = createSessionFactory();
-        }
+    private HibernateConnector() {
+        sessionFactory = createSessionFactory();
     }
 
     private Configuration getConfiguration() {
@@ -35,7 +33,14 @@ public class HibernateConnector implements Connector{
         return cfg.buildSessionFactory(builder.build());
     }
 
-    public SessionFactory getSessionFactory(){
+    public static HibernateConnector getInstance() {
+        if (hibernateConnector == null) {
+            hibernateConnector = new HibernateConnector();
+        }
+        return hibernateConnector;
+    }
+
+    public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 }

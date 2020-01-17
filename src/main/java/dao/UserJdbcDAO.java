@@ -11,7 +11,7 @@ public class UserJdbcDAO implements UserDAO {
     private Connection connection;
 
     public UserJdbcDAO() {
-        this.connection = new JdbcConnector().getConnection();
+        this.connection = JdbcConnector.getInstance().getConnection();
     }
 
     public boolean addUser(User user) throws SQLException {

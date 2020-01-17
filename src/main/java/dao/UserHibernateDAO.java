@@ -14,7 +14,7 @@ public class UserHibernateDAO implements UserDAO {
     private SessionFactory sessionFactory;
 
     public UserHibernateDAO() {
-        sessionFactory = new HibernateConnector().getSessionFactory();
+        sessionFactory = HibernateConnector.getInstance().getSessionFactory();
     }
 
     @Override

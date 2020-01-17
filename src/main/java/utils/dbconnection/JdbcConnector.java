@@ -4,18 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class JdbcConnector implements Connector{
+public class JdbcConnector implements Connector {
     private static Connection connection;
+    private static JdbcConnector jdbcConnector;
 
-    public JdbcConnector() {
-        if (connection == null) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(getConfiguration());
-            } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+    private JdbcConnector() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(getConfiguration());
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
+    }
+
+    public static JdbcConnector getInstance() {
+        if (jdbcConnector == null) {
+            jdbcConnector = new JdbcConnector();
+        }
+        return jdbcConnector;
     }
 
     private String getConfiguration() {
@@ -29,7 +35,7 @@ public class JdbcConnector implements Connector{
         return URL.toString();
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         return connection;
     }
 }
