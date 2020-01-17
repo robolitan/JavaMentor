@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
 
 @WebServlet(urlPatterns = "/add", name = "userServlet")
 public class AddUserServlet extends HttpServlet{
@@ -18,11 +16,10 @@ public class AddUserServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Map<String, String[]> parameters = req.getParameterMap();
-        String first_name = parameters.get("firstName")[0];
-        String second_name = parameters.get("lastName")[0];
-        String password = parameters.get("password")[0];
-        String birthday = parameters.get("birthday")[0];
+        String first_name = req.getParameter("firstName");
+        String second_name = req.getParameter("lastName");
+        String password = req.getParameter("password");
+        String birthday = req.getParameter("birthday");
         User user = new User(first_name, second_name, password, LocalDate.parse(birthday));
 
         if (userService.addUser(user)) {
@@ -30,13 +27,11 @@ public class AddUserServlet extends HttpServlet{
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
-        List<User> list = userService.getAllUsers();
-        req.setAttribute("usersList", list);
-        req.getRequestDispatcher("jsp/index.jsp").forward(req, resp);
+        resp.sendRedirect("/main");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/jsp/add_user.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/add_user.jsp").forward(req,resp);
     }
 }

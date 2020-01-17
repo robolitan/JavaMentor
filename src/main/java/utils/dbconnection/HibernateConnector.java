@@ -1,24 +1,21 @@
-package utils;
+package utils.dbconnection;
 
 import models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import java.sql.Connection;
 
-public class HibernateConnector {
+public class HibernateConnector implements Connector{
     private static SessionFactory sessionFactory;
 
-    private HibernateConnector() {
-    }
-
-    public static SessionFactory getSessionFactory() {
+    public HibernateConnector() {
         if (sessionFactory == null) {
             sessionFactory = createSessionFactory();
         }
-        return sessionFactory;
     }
 
-    private static Configuration getConfiguration() {
+    private Configuration getConfiguration() {
         Configuration cfg = new Configuration();
         cfg.addAnnotatedClass(User.class);
         cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
@@ -31,11 +28,16 @@ public class HibernateConnector {
         return cfg;
     }
 
-    private static SessionFactory createSessionFactory() {
+    private SessionFactory createSessionFactory() {
         Configuration cfg = getConfiguration();
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                 .applySettings(cfg.getProperties());
         return cfg.buildSessionFactory(builder.build());
     }
 
+    @Override
+    public Connection getConnection() {
+        sessionFactory.openSession();
+        return null;
+    }
 }

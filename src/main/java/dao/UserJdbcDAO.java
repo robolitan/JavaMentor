@@ -1,6 +1,7 @@
 package dao;
 
 import models.User;
+import utils.factory.JdbcConnectionFactory;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -10,8 +11,8 @@ import java.util.List;
 public class UserJdbcDAO implements UserDAO {
     private Connection connection;
 
-    public UserJdbcDAO(Connection connection) {
-        this.connection = connection;
+    public UserJdbcDAO() {
+        this.connection = new JdbcConnectionFactory().createConnection().getConnection();
     }
 
     public boolean addUser(User user) throws SQLException {

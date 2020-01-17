@@ -15,7 +15,7 @@
         <th>Birthday</th>
         <th>Action</th>
     </tr>
-    <c:forEach items="${usersList}" var="user">
+    <c:forEach items="${requestScope.usersList}" var="user">
         <tr>
             <td>${user.id}</td>
             <td>${user.firstName}</td>
@@ -33,7 +33,11 @@
             </td>
         </tr>
     </c:forEach>
-    <caption align="bottom"><a href="/add">add new user</a></caption>
+    <caption align="bottom">
+        <form action="/add" method="get">
+            <input type="submit" value="New user">
+        </form>
+    </caption>
 </table>
 </body>
 </html>

@@ -1,27 +1,16 @@
 package services;
 
 import dao.UserDAO;
-import dao.UserHibernateDAO;
 import dao.UserJdbcDAO;
 import models.User;
-import org.hibernate.Session;
-import utils.HibernateConnector;
-import utils.JdbcConnector;
-
 import javax.persistence.NoResultException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
-    private Connection connection;
-    private Session session;
 
-    public UserService() {
-        this.connection = JdbcConnector.getConnection();
-//        this.session = HibernateConnector.getSessionFactory().openSession();
-    }
+    public UserService() {}
 
     public boolean addUser(User user) {
         try {
@@ -32,15 +21,10 @@ public class UserService {
         }
     }
 
-    private UserDAO getUserDAO() {
-        return new UserJdbcDAO(connection);
-//        return new UserHibernateDAO(session.getSession());
-    }
-
     public List<User> getAllUsers() {
         try {
             return getUserDAO().getAllUser();
-        } catch (SQLException e) {
+        } catch (SQLException | NoResultException e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
@@ -71,5 +55,9 @@ public class UserService {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private UserDAO getUserDAO() {
+        return new UserJdbcDAO();
     }
 }

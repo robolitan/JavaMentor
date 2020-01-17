@@ -29,10 +29,8 @@ public class EditUserServlet extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_OK);
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-
         }
-        req.setAttribute("usersList", userService.getAllUsers());
-        req.getRequestDispatcher("jsp/index.jsp").forward(req, resp);
+        resp.sendRedirect("/main");
     }
 
     @Override
