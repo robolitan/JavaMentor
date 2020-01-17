@@ -4,9 +4,9 @@
     <link href="css/tablestyle.css" rel="stylesheet">
 </head>
 <body>
-<form action="/add" method="post">
     <table class="redTable" style="text-align: right">
         <caption style=" border: 2px solid #A40808; background: aqua ">Create user</caption>
+        <form action="/add" method="post">
         <tr>
             <td>F.Name:</td>
             <td>
@@ -41,8 +41,7 @@
                 <input type="submit" value="Sing up"/>
             </td>
         </tr>
+        </form>
     </table>
-    </div>
-</form>
 </body>
 </html>
