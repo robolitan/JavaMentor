@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import utils.dbconnection.HibernateConnector;
-import utils.factory.HibernateConnectionFactory;
 import javax.persistence.NoResultException;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,8 +14,7 @@ public class UserHibernateDAO implements UserDAO {
     private SessionFactory sessionFactory;
 
     public UserHibernateDAO() {
-        HibernateConnector conn = (HibernateConnector) new HibernateConnectionFactory().createConnection();
-        sessionFactory = conn.getSessionFactory();
+        sessionFactory = new HibernateConnector().getSessionFactory();
     }
 
     @Override
