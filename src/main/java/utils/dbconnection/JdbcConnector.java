@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class JdbcConnector implements Connector {
+public class JdbcConnector {
     private static Connection connection;
     private static JdbcConnector jdbcConnector;
 

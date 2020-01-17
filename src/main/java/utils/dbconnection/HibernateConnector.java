@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-public class HibernateConnector implements Connector {
+public class HibernateConnector {
     private static HibernateConnector hibernateConnector;
     private static SessionFactory sessionFactory;
 
