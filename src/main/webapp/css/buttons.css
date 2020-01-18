@@ -1,0 +1,51 @@
+.button30 {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 1.0em;
+    height: 1.0em;
+    line-height: 1.3em;
+    vertical-align: middle;
+    text-align: -moz-center;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba(255,255,255,.3);
+    font-size: 200%;
+    font-weight: 900;
+    color: #000;
+    border-radius: 100%;
+    background: rgb(248, 227, 145) linear-gradient(rgb(115, 111, 90), rgb(248, 227, 145));
+    box-shadow:
+            inset 0 -2px 1px rgba(0,0,0,.5),
+            inset 0 2px 1px rgba(255,255,255,.9),
+            0 4px 4px rgba(0,0,0,.9);
+}
+.button30:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 12%;
+    left: 12%;
+    right: 12%;
+    bottom: 12%;
+    border-radius: 100%;
+    background: rgb(242,203,20) linear-gradient(rgb(242,203,20), rgb(255,182,7));
+    box-shadow:
+            inset 0 2px 1px rgba(0,0,0,.5),
+            inset 0 -2px 1px rgba(255,255,255,.3);
+}
+.button24 {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin-right: auto;
+    padding: .5em 2em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: #FDBE33 #000 #D77206;
+    border-radius: 6px;
+    background: linear-gradient(#F3AE0F, #E38916) #E38916;
+    transition: 0.2s;
+}
+.button24:hover { background: linear-gradient(#f5ae00, #f59500) #f5ae00; }
+.button24:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }

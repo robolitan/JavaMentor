@@ -2,10 +2,11 @@
 <head>
     <title>Title</title>
     <link href="css/tablestyle.css" rel="stylesheet">
+    <link href="css/buttons.css" rel="stylesheet">
 </head>
 <body>
-    <table class="redTable" style="text-align: right">
-        <caption style=" border: 2px solid #A40808; background: aqua ">Create user</caption>
+    <table class="table_pricele" align="center">
+        <tr><th colspan="2">CREATE USER</tr>
         <form action="/add" method="post">
         <tr>
             <td>F.Name:</td>
@@ -38,7 +39,7 @@
             <td>
             </td>
             <td>
-                <input type="submit" value="Sing up"/>
+                <input type="submit" value="Sing up" class="button24"/>
             </td>
         </tr>
         </form>

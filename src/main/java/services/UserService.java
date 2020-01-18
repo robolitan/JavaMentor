@@ -17,7 +17,7 @@ public class UserService {
     public boolean addUser(User user) {
         try {
             return getUserDAO().addUser(user);
-        } catch (SQLException| NoResultException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -44,7 +44,7 @@ public class UserService {
     public User getUserById(int id) {
         try {
             return getUserDAO().getUserById(id);
-        } catch (SQLException | NoResultException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
