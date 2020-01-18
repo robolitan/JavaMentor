@@ -5,9 +5,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import utils.dbconnection.HibernateConnector;
+import utils.HibernateConnector;
 import javax.persistence.NoResultException;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO {
@@ -18,7 +18,7 @@ public class UserHibernateDAO implements UserDAO {
     }
 
     @Override
-    public boolean addUser(User user) throws SQLException {
+    public boolean addUser(User user) throws SQLException, NoResultException {
         if (userExist(user)) {
             return false;
         }

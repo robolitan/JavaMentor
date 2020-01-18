@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.UserJdbcDAO;
+import dao.UserDaoFactory;
 import services.UserService;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +11,12 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/main", name = "mainServlet")
 public class MainServlet extends HttpServlet {
+    UserService userService = new UserService(UserDaoFactory.getInstance().getUserDAO());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("usersList", new UserService(new UserJdbcDAO()).getAllUsers());
+        req.setAttribute("path", System.getProperty("user.dir"));
+        req.setAttribute("usersList", userService.getAllUsers());
         req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
     }
 }

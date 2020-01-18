@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.UserJdbcDAO;
+import dao.UserDaoFactory;
 import models.User;
 import services.UserService;
 import javax.servlet.ServletException;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 @WebServlet(urlPatterns = "/add", name = "userServlet")
 public class AddUserServlet extends HttpServlet{
-    UserService userService = new UserService(new UserJdbcDAO());
+    UserService userService = new UserService(UserDaoFactory.getInstance().getUserDAO());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

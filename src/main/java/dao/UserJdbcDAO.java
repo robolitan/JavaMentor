@@ -1,7 +1,7 @@
 package dao;
 
 import models.User;
-import utils.dbconnection.JdbcConnector;
+import utils.JdbcConnector;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;

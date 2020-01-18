@@ -1,7 +1,6 @@
 package services;
 
 import dao.UserDAO;
-import dao.UserJdbcDAO;
 import models.User;
 import javax.persistence.NoResultException;
 import java.sql.SQLException;
@@ -18,7 +17,7 @@ public class UserService {
     public boolean addUser(User user) {
         try {
             return getUserDAO().addUser(user);
-        } catch (SQLException e) {
+        } catch (SQLException| NoResultException e) {
             e.printStackTrace();
             return false;
         }

@@ -1,9 +1,12 @@
+C:\GitHub\JavaMentor\src\main\java\utils\dbconnection\JdbcConnector.java
 C:\GitHub\JavaMentor\src\main\java\dao\UserDAO.java
 C:\GitHub\JavaMentor\src\main\java\services\UserService.java
 C:\GitHub\JavaMentor\src\main\java\servlets\DeleteUserServlet.java
-C:\GitHub\JavaMentor\src\main\java\utils\Connector.java
 C:\GitHub\JavaMentor\src\main\java\servlets\AddUserServlet.java
 C:\GitHub\JavaMentor\src\main\java\servlets\EditUserServlet.java
+C:\GitHub\JavaMentor\src\main\java\dao\UserDaoFactory.java
 C:\GitHub\JavaMentor\src\main\java\models\User.java
-C:\GitHub\JavaMentor\src\main\java\models\Gender.java
+C:\GitHub\JavaMentor\src\main\java\dao\UserHibernateDAO.java
+C:\GitHub\JavaMentor\src\main\java\utils\dbconnection\HibernateConnector.java
 C:\GitHub\JavaMentor\src\main\java\servlets\MainServlet.java
+C:\GitHub\JavaMentor\src\main\java\dao\UserJdbcDAO.java
