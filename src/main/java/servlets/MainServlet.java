@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/main", name = "mainServlet")
 public class MainServlet extends HttpServlet {
-    UserService userService = new UserService(UserDaoFactory.getInstance().getUserDAO());
+    UserService userService = UserService.getInstance(new UserDaoFactory().getUserDAO());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

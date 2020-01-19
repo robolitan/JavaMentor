@@ -2,12 +2,12 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="css/teststyle.css" rel="stylesheet">
+    <link href="css/tablestyle.css" rel="stylesheet">
     <link href="css/buttons.css" rel="stylesheet">
 </head>
 <body>
 <form action="/edit" method="post">
-    <table class="table_pricele" align="center">
+    <table class="table_users" align="center">
         <tr>
             <th>First name</th>
             <th>Last name</th>

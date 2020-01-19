@@ -7,7 +7,7 @@
 </head>
 <body>
 <form action="/edit" method="post">
-    <table class="table_pricele" align="center">
+    <table class="table_users" align="center">
         <tr>
             <th>First name</th>
             <th>Last name</th>

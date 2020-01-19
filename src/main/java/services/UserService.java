@@ -2,15 +2,17 @@ package services;
 
 import dao.UserDAO;
 import models.User;
+
 import javax.persistence.NoResultException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
+    private static UserService instance;
     private UserDAO userDAO;
 
-    public UserService(UserDAO dao) {
+    private UserService(UserDAO dao) {
         this.userDAO = dao;
     }
 
@@ -61,5 +63,12 @@ public class UserService {
 
     private UserDAO getUserDAO() {
         return userDAO;
+    }
+
+    public static UserService getInstance(UserDAO dao) {
+        if (instance == null) {
+            instance = new UserService(dao);
+        }
+        return instance;
     }
 }

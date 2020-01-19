@@ -7,26 +7,16 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class UserDaoFactory {
-    private static UserDaoFactory userDaoFactory;
     private static UserDAO userDao;
 
-    private UserDaoFactory() {
-        if (getUserDAOProperties().equals("JDBC")) {
-            userDao = new UserJdbcDAO();
-        }
+    public UserDaoFactory() {
+    }
+    public UserDAO getUserDAO() {
         if (getUserDAOProperties().equals("Hibernate")) {
             userDao = new UserHibernateDAO();
+        } else {
+            userDao = new UserJdbcDAO();
         }
-    }
-
-    public static UserDaoFactory getInstance(){
-        if(userDaoFactory == null){
-            userDaoFactory = new UserDaoFactory();
-        }
-        return userDaoFactory;
-    }
-
-    public UserDAO getUserDAO() {
         return userDao;
     }
 

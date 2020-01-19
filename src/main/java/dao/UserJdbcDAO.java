@@ -23,7 +23,7 @@ public class UserJdbcDAO implements UserDAO {
         stmt.setString(1, user.getfirstName());
         stmt.setString(2, user.getLastName());
         stmt.setString(3, user.getPassword());
-        stmt.setDate(4, Date.valueOf(user.getBirthday()));
+        stmt.setString(4, user.getBirthday().toString());
         return stmt.executeUpdate() > 0;
     }
 
@@ -52,7 +52,7 @@ public class UserJdbcDAO implements UserDAO {
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setString(1, user.getfirstName());
         stmt.setString(2, user.getLastName());
-        stmt.setDate(3, Date.valueOf(user.getBirthday()));
+        stmt.setString(3, user.getBirthday().toString());
         stmt.setInt(4, user.getId());
         return stmt.executeUpdate() > 0;
     }
@@ -83,7 +83,7 @@ public class UserJdbcDAO implements UserDAO {
         String first_name = resultSet.getString(2);
         String second_name = resultSet.getString(3);
         String password = resultSet.getString(4);
-        LocalDate birthday = resultSet.getDate(5).toLocalDate();
+        Date birthday = resultSet.getDate(5);
         return new User(id, first_name,second_name, password, birthday);
     }
 }

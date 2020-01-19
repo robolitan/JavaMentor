@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Map;
 
 @WebServlet(urlPatterns = "/edit", name = "editUserServlet")
 public class EditUserServlet extends HttpServlet {
-    UserService userService = new UserService(UserDaoFactory.getInstance().getUserDAO());
+    UserService userService = UserService.getInstance(new UserDaoFactory().getUserDAO());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,7 +25,7 @@ public class EditUserServlet extends HttpServlet {
         String lastName = parameters.get("lastName")[0];
         String password = parameters.get("password")[0];
         String birthday = parameters.get("birthday")[0];
-        User user = new User(id, firstName,lastName,password, LocalDate.parse(birthday));
+        User user = new User(id, firstName,lastName,password, Date.valueOf(birthday));
 
         if (userService.editUser(user)) {
             resp.setStatus(HttpServletResponse.SC_OK);

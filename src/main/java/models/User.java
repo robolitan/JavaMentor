@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -22,19 +23,19 @@ public class User{
     private String password;
 
     @Column(name = "birthday")
-    private LocalDate birthday;
+    private Date birthday;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String password, LocalDate birthday) {
+    public User(String firstName, String lastName, String password, Date birthday) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.birthday = birthday;
     }
 
-    public User(int id, String firstName, String lastName, String password, LocalDate birthday) {
+    public User(int id, String firstName, String lastName, String password, Date birthday) {
         this(firstName, lastName, password, birthday);
         this.id = id;
     }
@@ -71,11 +72,11 @@ public class User{
         this.password = password;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate date) {
+    public void setBirthday(Date date) {
         this.birthday = date;
     }
 }

@@ -4,11 +4,11 @@
 <html>
 <head>
     <title>TASK 1</title>
-    <link href="css/teststyle.css" rel="stylesheet">
+    <link href="css/tablestyle.css" rel="stylesheet">
     <link href="css/buttons.css" rel="stylesheet">
 </head>
 <body>
-<table class="table_pricele" align="center">
+<table class="table_users" style="margin: auto; align-self: center">
     <tr>
         <th>ID</th>
         <th>First name</th>
@@ -25,11 +25,11 @@
             <td>
                 <form action="/delete" method="post">
                     <input type="text" value="${user.id}" name="id" hidden="hidden">
-                    <input type="submit" value="delete" class="button24">
+                    <input type="submit" value="Delete" class="button24">
                 </form>
                 <form action="/edit" method="get">
                     <input type="text" value="${user.id}" name="id" hidden="hidden">
-                    <input type="submit" value="  edit  " class="button24">
+                    <input type="submit" value="  Edit  " class="button24">
                 </form>
             </td>
         </tr>
