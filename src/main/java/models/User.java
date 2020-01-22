@@ -25,6 +25,8 @@ public class User{
     @Column(name = "birthday")
     private Date birthday;
 
+    private String role;
+
     public User() {
     }
 
@@ -38,6 +40,14 @@ public class User{
     public User(int id, String firstName, String lastName, String password, Date birthday) {
         this(firstName, lastName, password, birthday);
         this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getId() {
