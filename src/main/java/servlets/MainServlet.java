@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.UserDaoFactory;
+import factories.UserDaoFactory;
 import services.UserService;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

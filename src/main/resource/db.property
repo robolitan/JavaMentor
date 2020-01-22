@@ -1,1 +1,1 @@
-userDAOWith=JDBC
+userDAOWith=Hibernate

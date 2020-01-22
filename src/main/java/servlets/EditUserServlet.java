@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.UserDaoFactory;
+import factories.UserDaoFactory;
 import models.User;
 import services.UserService;
 import javax.servlet.ServletException;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Map;
 
 @WebServlet(urlPatterns = "/edit", name = "editUserServlet")
