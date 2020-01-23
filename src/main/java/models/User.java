@@ -26,7 +26,7 @@ public class User{
     private Date birthday;
 
     @Column(name = "user_role")
-    private String role = "user";
+    private String role;
 
     public User() {
     }

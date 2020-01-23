@@ -36,6 +36,7 @@ public class UserHibernateDAO implements UserDAO {
     public boolean editUser(User user) throws SQLException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        user.setRole(getUserById(user.getId()).getRole());
         session.replicate(user, ReplicationMode.OVERWRITE);
         transaction.commit();
         session.close();
@@ -79,7 +80,7 @@ public class UserHibernateDAO implements UserDAO {
     @Override
     public User authUser(String name, String password) throws SQLException, NoResultException {
         Session session = sessionFactory.openSession();
-        String hql = "FROM User WHERE f_name = :name AND password = :password";
+            String hql = "FROM User WHERE f_name = :name AND password = :password";
         Query query = session.createQuery(hql);
         query.setParameter("name", name);
         query.setParameter("password", password);
