@@ -63,7 +63,7 @@ public class UserService {
     public User authUser(String name, String password){
         try {
             return getUserDAO().authUser(name,password);
-        } catch (SQLException e) {
+        } catch (SQLException | NoResultException e) {
             e.printStackTrace();
             return null;
         }

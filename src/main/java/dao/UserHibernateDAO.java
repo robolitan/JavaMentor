@@ -5,7 +5,9 @@ import org.hibernate.ReplicationMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import utils.HibernateConnector;
+
 import javax.persistence.NoResultException;
 import java.sql.*;
 import java.util.List;
@@ -75,7 +77,13 @@ public class UserHibernateDAO implements UserDAO {
     }
 
     @Override
-    public User authUser(String name, String password) throws SQLException {
-        return null;
+    public User authUser(String name, String password) throws SQLException, NoResultException {
+        Session session = sessionFactory.openSession();
+        String hql = "FROM User WHERE f_name = :name AND password = :password";
+        Query query = session.createQuery(hql);
+        query.setParameter("name", name);
+        query.setParameter("password", password);
+        User user =(User) query.getSingleResult();
+        return user;
     }
 }
