@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/edit", name = "editUserServlet")
+@WebServlet(urlPatterns = "/admin/edit", name = "editUserServlet")
 public class EditUserServlet extends HttpServlet {
     UserService userService = UserService.getInstance(new UserDaoFactory().getUserDAO());
 
@@ -31,12 +31,12 @@ public class EditUserServlet extends HttpServlet {
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
-        resp.sendRedirect("/main");
+        resp.sendRedirect("/admin/all");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("user", userService.getUserById(Integer.parseInt(req.getParameter("id"))));
-        req.getRequestDispatcher("jsp/edit_user.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/edit_user.jsp").forward(req, resp);
     }
 }

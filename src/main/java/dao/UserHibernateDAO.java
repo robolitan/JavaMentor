@@ -73,4 +73,9 @@ public class UserHibernateDAO implements UserDAO {
         session.close();
         return userByid;
     }
+
+    @Override
+    public User authUser(String name, String password) throws SQLException {
+        return null;
+    }
 }

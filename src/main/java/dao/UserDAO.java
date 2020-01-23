@@ -13,6 +13,8 @@ public interface UserDAO {
 
     boolean userExist(User user) throws SQLException;
 
+    User authUser(String name, String password) throws SQLException;
+
     List<User> getAllUser() throws SQLException;
 
     User getUserById(int id) throws SQLException;

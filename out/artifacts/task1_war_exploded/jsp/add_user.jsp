@@ -1,13 +1,13 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="css/tablestyle.css" rel="stylesheet">
-    <link href="css/buttons.css" rel="stylesheet">
+    <link href="/css/tablestyle.css" rel="stylesheet">
+    <link href="/css/buttons.css" rel="stylesheet">
 </head>
 <body>
     <table class="table_users" align="center">
         <tr><th colspan="2">CREATE USER</tr>
-        <form action="/add" method="post">
+        <form action="/admin/add" method="post">
         <tr>
             <td>F.Name:</td>
             <td>

@@ -25,7 +25,8 @@ public class User{
     @Column(name = "birthday")
     private Date birthday;
 
-    private String role;
+    @Column(name = "user_role")
+    private String role = "user";
 
     public User() {
     }

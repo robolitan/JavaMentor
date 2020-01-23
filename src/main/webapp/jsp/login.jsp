@@ -4,8 +4,8 @@
     <link href="/css/loginstyle.css" rel="stylesheet">
 </head>
 <body>
-<form action="/user" method="post" class="form">
-    <h1>Log in</h1>
+<form action="/auth" method="post" class="form">
+    <h1 class="form_title">Log in</h1>
     <div class="form_group">
         <input class="form_input" placeholder = " " type="text" name="name" required/>
         <label class = "form_label">Login</label>

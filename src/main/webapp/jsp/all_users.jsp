@@ -4,8 +4,8 @@
 <html>
 <head>
     <title>TASK 1</title>
-    <link href="css/tablestyle.css" rel="stylesheet">
-    <link href="css/buttons.css" rel="stylesheet">
+    <link href="/css/tablestyle.css" rel="stylesheet">
+    <link href="/css/buttons.css" rel="stylesheet">
 </head>
 <body>
 <table class="table_users" style="margin: auto; align-self: center">
@@ -23,11 +23,11 @@
             <td>${user.lastName}</td>
             <td>${user.birthday}</td>
             <td>
-                <form action="/delete" method="post">
+                <form action="/admin/delete" method="post">
                     <input type="text" value="${user.id}" name="id" hidden="hidden">
                     <input type="submit" value="Delete" class="button24">
                 </form>
-                <form action="/edit" method="get">
+                <form action="/admin/edit" method="get">
                     <input type="text" value="${user.id}" name="id" hidden="hidden">
                     <input type="submit" value="  Edit  " class="button24">
                 </form>
@@ -36,7 +36,7 @@
     </c:forEach>
     <tr>
         <td colspan="5">
-            <form action="/add" method="get">
+            <form action="/admin/add" method="get">
                 <input type="submit" value="Add" class="button24">
             </form>
         </td>

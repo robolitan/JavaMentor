@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="css/tablestyle.css" rel="stylesheet">
-    <link href="css/buttons.css" rel="stylesheet">
+    <link href="/css/tablestyle.css" rel="stylesheet">
+    <link href="/css/buttons.css" rel="stylesheet">
 </head>
 <body>
-<form action="/edit" method="post">
+<form action="/admin/edit" method="post">
     <table class="table_users" align="center">
         <tr>
             <th>First name</th>

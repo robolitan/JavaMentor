@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet(urlPatterns = "/add", name = "userServlet")
+@WebServlet(urlPatterns = "/admin/add", name = "userServlet")
 public class AddUserServlet extends HttpServlet{
     UserService userService = UserService.getInstance(new UserDaoFactory().getUserDAO());
 
@@ -28,11 +28,11 @@ public class AddUserServlet extends HttpServlet{
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
-        resp.sendRedirect("/main");
+        resp.sendRedirect("/admin/all");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("jsp/add_user.jsp").forward(req,resp);
+        req.getRequestDispatcher("/jsp/add_user.jsp").forward(req,resp);
     }
 }

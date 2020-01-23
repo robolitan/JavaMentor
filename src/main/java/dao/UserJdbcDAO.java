@@ -68,6 +68,20 @@ public class UserJdbcDAO implements UserDAO {
         return user;
     }
 
+    @Override
+    public User authUser(String name, String password) throws SQLException {
+        String sql = "SELECT * FROM db_task_1.users WHERE f_name = ? AND password = ?";
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setString(1,name);
+        stmt.setString(2,password);
+        ResultSet resultSet = stmt.executeQuery();
+        User user = null;
+        if (resultSet.next()) {
+            user = getUserFromResultSet(resultSet);
+        }
+        return user;
+    }
+
     public boolean userExist(User user) throws SQLException {
         String sql = "SELECT * FROM db_task_1.users WHERE f_name = ? AND l_name = ? AND password = ? ";
         PreparedStatement stmt = connection.prepareStatement(sql);
@@ -83,6 +97,9 @@ public class UserJdbcDAO implements UserDAO {
         String second_name = resultSet.getString(3);
         String password = resultSet.getString(4);
         Date birthday = resultSet.getDate(5);
-        return new User(id, first_name,second_name, password, birthday);
+        String role = resultSet.getString(6);
+        User user = new User(id, first_name,second_name, password, birthday);
+        user.setRole(role);
+        return user;
     }
 }

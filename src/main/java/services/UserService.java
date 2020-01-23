@@ -2,7 +2,6 @@ package services;
 
 import dao.UserDAO;
 import models.User;
-
 import javax.persistence.NoResultException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,8 +38,8 @@ public class UserService {
             return getUserDAO().deleteUserById(id);
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     public User getUserById(int id) {
@@ -57,8 +56,17 @@ public class UserService {
             return getUserDAO().editUser(user);
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
+    }
+
+    public User authUser(String name, String password){
+        try {
+            return getUserDAO().authUser(name,password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private UserDAO getUserDAO() {

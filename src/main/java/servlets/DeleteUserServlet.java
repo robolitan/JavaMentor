@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/delete", name = "deleteUserPatern")
+@WebServlet(urlPatterns = "/admin/delete", name = "deleteUserPatern")
 public class DeleteUserServlet extends HttpServlet {
     UserService userService = UserService.getInstance(new UserDaoFactory().getUserDAO());
 
@@ -20,6 +20,6 @@ public class DeleteUserServlet extends HttpServlet {
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
-        resp.sendRedirect("/main");
+        resp.sendRedirect("/admin/all");
     }
 }
