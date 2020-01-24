@@ -36,7 +36,6 @@ public class UserHibernateDAO implements UserDAO {
     public boolean editUser(User user) throws SQLException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        user.setRole(getUserById(user.getId()).getRole());
         session.replicate(user, ReplicationMode.OVERWRITE);
         transaction.commit();
         session.close();

@@ -59,11 +59,11 @@ public class User{
         this.id = id;
     }
 
-    public String getfirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setfirstName(String fName) {
+    public void setFirstName(String fName) {
         this.firstName = fName;
     }
 

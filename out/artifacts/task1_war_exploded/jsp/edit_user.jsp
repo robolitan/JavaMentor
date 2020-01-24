@@ -24,7 +24,6 @@
             <td>
                 <input type="text" value="${requestScope.user.birthday}" name="birthday"
                        required="required" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])">
-                <input type="text" value="${requestScope.user.password}" name="password" hidden="hidden">
             </td>
         </tr>
         <tr>

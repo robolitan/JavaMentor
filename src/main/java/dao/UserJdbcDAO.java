@@ -19,7 +19,7 @@ public class UserJdbcDAO implements UserDAO {
         }
         String sql = "INSERT INTO users (f_name,l_name, password, birthday) VALUES (?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setString(1, user.getfirstName());
+        stmt.setString(1, user.getFirstName());
         stmt.setString(2, user.getLastName());
         stmt.setString(3, user.getPassword());
         stmt.setString(4, user.getBirthday().toString());
@@ -49,7 +49,7 @@ public class UserJdbcDAO implements UserDAO {
     public boolean editUser(User user) throws SQLException {
         String sql = "UPDATE users SET f_name = ?,l_name = ?, birthday = ? WHERE id_user = ?;";
         PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setString(1, user.getfirstName());
+        stmt.setString(1, user.getFirstName());
         stmt.setString(2, user.getLastName());
         stmt.setString(3, user.getBirthday().toString());
         stmt.setInt(4, user.getId());
@@ -85,7 +85,7 @@ public class UserJdbcDAO implements UserDAO {
     public boolean userExist(User user) throws SQLException {
         String sql = "SELECT * FROM db_task_1.users WHERE f_name = ? AND l_name = ? AND password = ? ";
         PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setString(1, user.getfirstName());
+        stmt.setString(1, user.getFirstName());
         stmt.setString(2, user.getLastName());
         stmt.setString(3, user.getPassword());
         return stmt.executeQuery().next();

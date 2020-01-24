@@ -1,7 +1,6 @@
 package filters;
 
 import factories.UserDaoFactory;
-import models.User;
 import services.UserService;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/login", "/user", "/admin/*"})
-public class ByRolesFilter implements Filter {
+@WebFilter(urlPatterns = {"/*"})
+public class AuthFilter implements Filter {
     UserService userService = UserService.getInstance(new UserDaoFactory().getUserDAO());
     FilterConfig config;
 
@@ -26,15 +25,14 @@ public class ByRolesFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         String path = request.getServletPath();
         HttpSession httpSession = request.getSession(false);
-        if (httpSession != null && httpSession.getAttribute("loggedUser") != null) {
-            User user = (User) httpSession.getAttribute("loggedUser");
-            if (path.contains("/admin") && user.getRole().equals("admin")) {
-                request.getRequestDispatcher(path).forward(request,response);
+        if (httpSession == null || (httpSession != null && httpSession.getAttribute("loggedUser") == null)) {
+            if (path.equals("/auth")) {
+                request.getRequestDispatcher("/auth").forward(request,response);
             } else {
-                request.getRequestDispatcher("/user").forward(request, response);
+                request.getRequestDispatcher("/login").forward(request, response);
             }
         } else {
-            request.getRequestDispatcher("/login").forward(request, response);
+            chain.doFilter(request, response);
         }
     }
 

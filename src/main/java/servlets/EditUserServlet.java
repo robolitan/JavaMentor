@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.Map;
 
 @WebServlet(urlPatterns = "/admin/edit", name = "editUserServlet")
 public class EditUserServlet extends HttpServlet {
@@ -18,15 +17,12 @@ public class EditUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Map<String, String[]> parameters = req.getParameterMap();
-        int id = Integer.parseInt(parameters.get("id")[0]);
-        String firstName = parameters.get("firstName")[0];
-        String lastName = parameters.get("lastName")[0];
-        String password = parameters.get("password")[0];
-        String birthday = parameters.get("birthday")[0];
-        User user = new User(id, firstName,lastName,password, Date.valueOf(birthday));
-
-        if (userService.editUser(user)) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        User userForEdit = userService.getUserById(id);
+        userForEdit.setFirstName(req.getParameter("firstName"));
+        userForEdit.setLastName(req.getParameter("lastName"));
+        userForEdit.setBirthday(Date.valueOf(req.getParameter("birthday")));
+        if (userService.editUser(userForEdit)) {
             resp.setStatus(HttpServletResponse.SC_OK);
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
